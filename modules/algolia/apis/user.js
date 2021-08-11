@@ -34,7 +34,7 @@ export default (algoliaConfig) => {
         },
         create: async (identity, payload) => {
             try {
-                return unWrap(await fetch(`https://${algoliaConfig.appId}-dsn.algolia.net/1/indexes/users/${identity.id}`, {
+                return unWrap(await fetch(`https://${algoliaConfig.appId}-dsn.algolia.net/1/indexes/nuxtbnb_users/${identity.id}`, {
                     headers,
                     method: 'PUT',
                     body: JSON.stringify(payload),
@@ -45,7 +45,7 @@ export default (algoliaConfig) => {
         },
         getById: async (identity) => {
             try {
-                return unWrap(await fetch(`https://${algoliaConfig.appId}-dsn.algolia.net/1/indexes/users/${identity.id}`, {
+                return unWrap(await fetch(`https://${algoliaConfig.appId}-dsn.algolia.net/1/indexes/nuxtbnb_users/${identity.id}`, {
                     headers,               
                 }))
             } catch(error){

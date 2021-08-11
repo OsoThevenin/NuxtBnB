@@ -15,7 +15,7 @@ export default function({ $config }, inject){
 
     async function getHome(homeId){
         try {
-        return unWrap(await fetch(`https://${$config.algolia.appId}-dsn.algolia.net/1/indexes/homes/${homeId}`, { headers }))        
+        return unWrap(await fetch(`https://${$config.algolia.appId}-dsn.algolia.net/1/indexes/nuxtbnb_homes/${homeId}`, { headers }))        
         } catch(error){
             return getErrorResponse(error)
         }
@@ -23,7 +23,7 @@ export default function({ $config }, inject){
 
     async function getReviewsByHomeId(homeId){
         try {
-            return unWrap(await fetch(`https://${$config.algolia.appId}-dsn.algolia.net/1/indexes/reviews/query`, {
+            return unWrap(await fetch(`https://${$config.algolia.appId}-dsn.algolia.net/1/indexes/nuxtbnb_reviews/query`, {
                 headers,
                 method: 'POST',
                 body: JSON.stringify({
@@ -39,7 +39,7 @@ export default function({ $config }, inject){
 
     async function getUserByHomeId(homeId){
         try {
-            return unWrap(await fetch(`https://${$config.algolia.appId}-dsn.algolia.net/1/indexes/users/query`, {
+            return unWrap(await fetch(`https://${$config.algolia.appId}-dsn.algolia.net/1/indexes/nuxtbnb_users/query`, {
                 headers,
                 method: 'POST',
                 body: JSON.stringify({
@@ -59,7 +59,7 @@ export default function({ $config }, inject){
             for(var day = parseInt(start);day <= parseInt(end); day += 86400){
                 days.push(`availability:${day}`)
             }
-            return unWrap(await fetch(`https://${$config.algolia.appId}-dsn.algolia.net/1/indexes/homes/query`, {
+            return unWrap(await fetch(`https://${$config.algolia.appId}-dsn.algolia.net/1/indexes/nuxtbnb_homes/query`, {
                 headers,
                 method: 'POST',
                 body: JSON.stringify({
@@ -75,8 +75,9 @@ export default function({ $config }, inject){
         }
     }
     async function getHomes(){
+        console.log('ALGOLIA CONFIG:', $config.algolia.appId)
         try {
-            return unWrap(await fetch(`https://${$config.algolia.appId}-dsn.algolia.net/1/indexes/homes/query`, {
+            return unWrap(await fetch(`https://${$config.algolia.appId}-dsn.algolia.net/1/indexes/nuxtbnb_homes/query`, {
                 headers,
                 method: 'POST',
                 body: JSON.stringify({                    

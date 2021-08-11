@@ -7,7 +7,7 @@ export default (algoliaConfig) => {
     return {
         get: async (homeId) => {
             try {
-                return unWrap(await fetch(`https://${algoliaConfig.appId}-dsn.algolia.net/1/indexes/homes/${homeId}`, {
+                return unWrap(await fetch(`https://${algoliaConfig.appId}-dsn.algolia.net/1/indexes/nuxtbnb_homes/${homeId}`, {
                     headers,                    
                 }))
             } catch(error){
@@ -16,7 +16,7 @@ export default (algoliaConfig) => {
         },
         delete: async (homeId) => {
             try {
-                return unWrap(await fetch(`https://${algoliaConfig.appId}-dsn.algolia.net/1/indexes/homes/${homeId}`, {
+                return unWrap(await fetch(`https://${algoliaConfig.appId}-dsn.algolia.net/1/indexes/nuxtbnb_homes/${homeId}`, {
                     headers,
                     method: 'DELETE',                    
                 }))
@@ -38,7 +38,7 @@ export default (algoliaConfig) => {
                 delete payload.availabilityRanges
                 payload.availability = availability
                 
-                return unWrap(await fetch(`https://${algoliaConfig.appId}-dsn.algolia.net/1/indexes/homes/${homeId}`, {
+                return unWrap(await fetch(`https://${algoliaConfig.appId}-dsn.algolia.net/1/indexes/nuxtbnb_homes/${homeId}`, {
                     headers,
                     method: 'PUT',
                     body: JSON.stringify(payload),
@@ -49,7 +49,7 @@ export default (algoliaConfig) => {
         },
         getByUserId: async (userId) => {
             try {
-                return unWrap(await fetch(`https://${algoliaConfig.appId}-dsn.algolia.net/1/indexes/homes/query`, {
+                return unWrap(await fetch(`https://${algoliaConfig.appId}-dsn.algolia.net/1/indexes/nuxtbnb_homes/query`, {
                     headers,
                     method: 'POST',
                     body: JSON.stringify({
